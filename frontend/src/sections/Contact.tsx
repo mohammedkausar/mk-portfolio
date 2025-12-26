@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { API_CONFIG } from "@/config/api";
 
 const Contact = ({ contactData }: any) => {
   const [loading, setLoading] = useState(false);
@@ -10,15 +11,16 @@ const Contact = ({ contactData }: any) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (loading) return;
+
     setLoading(true);
-    setStatus("idle");
 
     const formData = new FormData(e.currentTarget);
 
     const payload = Object.fromEntries(formData.entries());
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(`${API_CONFIG.BASE_URL}/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,12 +31,14 @@ const Contact = ({ contactData }: any) => {
       if (!res.ok) throw new Error("Request failed");
 
       setStatus("success");
-      e.currentTarget.reset();
+      // e.currentTarget.reset();
     } catch (err) {
       setStatus("error");
+      console.log(err);
     } finally {
       setLoading(false);
     }
+    console.log(status);
   };
 
   return (
@@ -66,6 +70,7 @@ const Contact = ({ contactData }: any) => {
                     <Input
                       name={field.name}
                       type={field.type}
+                      required
                       placeholder={field.placeholder}
                       pattern={field.type === "tel" ? "[0-9+ ]*" : undefined}
                     />
@@ -84,13 +89,13 @@ const Contact = ({ contactData }: any) => {
               </Button>
 
               {status === "success" && (
-                <p className="text-sm text-green-600">
+                <p className="text-sm text-center text-green-600">
                   Message sent successfully.
                 </p>
               )}
 
               {status === "error" && (
-                <p className="text-sm text-red-600">
+                <p className="text-sm text-center text-red-600">
                   Something went wrong. Please try again.
                 </p>
               )}

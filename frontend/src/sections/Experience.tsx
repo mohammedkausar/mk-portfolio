@@ -19,7 +19,7 @@ const Experience = ({ data }: any) => {
               <div key={index} className="relative flex gap-8">
                 {/* Dot */}
                 <div
-                  className={`relative z-10  h-3 w-3 rounded-full  ${
+                  className={`relative z-10  h-3 w-3  rounded-full shrink-0  ${
                     isDark ? "bg-neutral-300" : "bg-neutral-900"
                   }`}
                 />

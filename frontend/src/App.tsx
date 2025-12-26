@@ -10,6 +10,7 @@ import Projects from "./sections/Projects";
 import Experience from "./sections/Experience";
 import Footer from "./components/Footer";
 import Contact from "./sections/Contact";
+import BackToTop from "./components/BackToTop";
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
         <Projects project={data.projects} />
         <Experience data={data.experience} />
         <Contact contactData={data.contact} />
+        <BackToTop />
         <Footer footerData={data.footer} />
       </ThemeProvider>
     </BrowserRouter>

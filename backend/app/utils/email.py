@@ -6,7 +6,7 @@ resend.api_key = os.getenv("RESEND_API_KEY")
 
 def send_contact_email(data: ContactRequest):
     response = resend.Emails.send({
-        "from": "Portfolio <onboarding@resend.dev>",
+        "from": os.getenv("FROM_EMAIL"),
         "to": os.getenv("TO_EMAIL"),
         "subject": f"New contact from {data.name}",
         "html": f"""

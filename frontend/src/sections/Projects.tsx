@@ -1,6 +1,5 @@
 import { useTheme } from "@/context/theme-context";
 import { Link, Github } from "lucide-react";
-import React from "react";
 
 const icons: any = {
   git: <Github className="size-4" color="black" />,

@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { useTheme } from "@/context/theme-context";
-import React from "react";
 
 const skillLabels: Record<string, string> = {
   aws: "AWS",

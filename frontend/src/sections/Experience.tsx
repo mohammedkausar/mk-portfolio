@@ -1,5 +1,4 @@
 import { useTheme } from "@/context/theme-context";
-import React from "react";
 
 const Experience = ({ data }: any) => {
   const { isDark } = useTheme();

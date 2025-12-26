@@ -1,30 +1,25 @@
-import smtplib
-from email.message import EmailMessage
 import os
-from dotenv import load_dotenv
-load_dotenv()
+import resend
+from app.schemas import ContactRequest
 
-def send_contact_email(data):
-    msg = EmailMessage()
-    msg["Subject"] = f'New Contact Message from - {data.name}'
-    msg["From"] = os.getenv("EMAIL_USER")
-    msg["To"] = os.getenv("EMAIL_TO")
+resend.api_key = os.getenv("RESEND_API_KEY")
 
-    msg.set_content(
-        f"""
-Name: {data.name}
-Email: {data.email}
-WhatsApp: {data.whatsapp}
+def send_contact_email(data: ContactRequest):
+    response = resend.Emails.send({
+        "from": "Portfolio <onboarding@resend.dev>",
+        "to": os.getenv("CONTACT_TO_EMAIL"),
+        "subject": f"New contact from {data.name}",
+        "html": f"""
+        <h3>New Contact Message</h3>
+        <p><strong>Name:</strong> {data.name}</p>
+        <p><strong>Email:</strong> {data.email}</p>
+        <p><strong>WhatsApp:</strong> {data.whatsapp}</p>
+        <p><strong>Message:</strong></p>
+        <p>{data.message}</p>
+        """
+    })
 
-Message:
-{data.message}
-"""
-    )
+    if not response or "id" not in response:
+        raise RuntimeError("Email send failed")
 
-    with smtplib.SMTP(os.getenv("EMAIL_HOST"), int(os.getenv("EMAIL_PORT"))) as server:
-        server.starttls()
-        server.login(
-            os.getenv("EMAIL_USER"),
-            os.getenv("EMAIL_PASSWORD"),
-        )
-        server.send_message(msg)
+    return response

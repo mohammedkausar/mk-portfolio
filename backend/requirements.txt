@@ -5,3 +5,4 @@ email-validator
 python-dotenv
 python-multipart
 
+resend==0.8.0

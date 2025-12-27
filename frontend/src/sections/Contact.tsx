@@ -8,15 +8,17 @@ import { API_CONFIG } from "@/config/api";
 const Contact = ({ contactData }: any) => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (loading) return;
 
     setLoading(true);
+    setStatus("idle");
+    setErrorMessage("");
 
     const formData = new FormData(e.currentTarget);
-
     const payload = Object.fromEntries(formData.entries());
 
     try {
@@ -28,17 +30,20 @@ const Contact = ({ contactData }: any) => {
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Request failed");
+      const data = await res.json(); // 🔑 read backend response
+
+      if (!res.ok) {
+        throw new Error(data.detail || "Something went wrong");
+      }
 
       setStatus("success");
-      // e.currentTarget.reset();
-    } catch (err) {
+      // e.currentTarget.reset(); // optional
+    } catch (err: any) {
       setStatus("error");
-      console.log(err);
+      setErrorMessage(err.message);
     } finally {
       setLoading(false);
     }
-    console.log(status);
   };
 
   return (
@@ -65,6 +70,7 @@ const Contact = ({ contactData }: any) => {
                       name={field.name}
                       placeholder={field.placeholder}
                       className="min-h-[120px]"
+                      required
                     />
                   ) : (
                     <Input
@@ -84,7 +90,9 @@ const Contact = ({ contactData }: any) => {
                 </div>
               ))}
 
-              <Button type="submit" className="w-full " disabled={loading}>
+              <input type="text" name="company" className="hidden" />
+
+              <Button type="submit" className="w-full" disabled={loading}>
                 {loading ? "Sending..." : contactData.submitText}
               </Button>
 
@@ -96,7 +104,7 @@ const Contact = ({ contactData }: any) => {
 
               {status === "error" && (
                 <p className="text-sm text-center text-red-600">
-                  Something went wrong. Please try again.
+                  {errorMessage}
                 </p>
               )}
             </form>

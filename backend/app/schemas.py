@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel, EmailStr
 
 class ContactRequest(BaseModel):
@@ -5,3 +6,4 @@ class ContactRequest(BaseModel):
     email: EmailStr
     whatsapp: str
     message: str
+    company: Optional[str] = None

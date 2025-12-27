@@ -275,7 +275,7 @@ const Skills = ({ skill }: any) => {
             key={i}
             className={`flex flex-col items-center gap-3 p-8
       lg:hover:-translate-y-4 lg:transition-all lg:duration-300
-      cursor-pointer hover:rotate-360
+      cursor-pointer hover:rotate-360 transition-transform active:rotate-180
       ${isDark ? "bg-white" : "bg-background border shadow-xl"}
     `}
           >
@@ -315,7 +315,7 @@ const Skills = ({ skill }: any) => {
               key={i}
               className={`flex flex-col items-center gap-3 p-8
       lg:hover:-translate-y-4 lg:transition-all lg:duration-300
-      cursor-pointer hover:rotate-360
+      cursor-pointer hover:rotate-360 transition-transform active:rotate-180
       ${isDark ? "bg-white" : "bg-background border shadow-xl"}
     `}
             >

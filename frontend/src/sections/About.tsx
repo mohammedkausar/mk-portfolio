@@ -62,9 +62,9 @@ const About = ({ about }: any) => {
           </div>
         </div>
         <div className="flex flex-col-reverse ">
-          <div className="relative bg-linear-to-tl from-purple-900 to-violet-800 border-purple-700 shadow-2xl lg:w-[60%] xl:w-[70%] p-8 lg:rounded-2xl lg:hover:-translate-y-8 lg:transition-all lg:duration-300">
+          <div className="relative bg-linear-to-tl from-purple-900 to-violet-800 border-purple-700 shadow-2xl lg:w-[60%] xl:w-[70%] p-4 sm:p-8 lg:rounded-2xl lg:hover:-translate-y-8 lg:transition-all lg:duration-300">
             <Badge
-              className="absolute left-[3%] sm:left-[30%] lg:left-[70%] lg:py-1 lg:px-2 bottom-[95%] lg:bottom-[85%] animate-caret-blink bg-red-700!"
+              className="lg:absolute mx-auto mb-2 block wrap-anywhere lg:left-[70%] lg:py-1 lg:px-2 bottom-[95%] lg:bottom-[85%] animate-caret-blink bg-red-700!"
               variant="destructive"
             >
               {about.current}

@@ -61,14 +61,8 @@ const About = ({ about }: any) => {
             <span className="">{about.lname}</span>
           </div>
         </div>
-        <div className="flex flex-col-reverse ">
+        <div className="flex  flex-col-reverse ">
           <div className="relative bg-linear-to-tl from-purple-900 to-violet-800 border-purple-700 shadow-2xl lg:w-[60%] xl:w-[70%] p-4 sm:p-8 lg:rounded-2xl lg:hover:-translate-y-8 lg:transition-all lg:duration-300">
-            <Badge
-              className="lg:absolute mx-auto mb-2 block wrap-anywhere lg:left-[70%] lg:py-1 lg:px-2 bottom-[95%] lg:bottom-[85%] animate-caret-blink bg-red-700!"
-              variant="destructive"
-            >
-              {about.current}
-            </Badge>
             <div className="hidden lg:flex flex-col gap-2">
               <span>{about.greet}</span>
               <div className="flex flex-col gap-4 font-extrabold mb-5  sm:text-5xl">
@@ -98,9 +92,9 @@ const About = ({ about }: any) => {
               </div>
             </div>
           </div>
-          <div className="lg:absolute lg:left-[63%] xl:left-[70%]  lg:bottom-[15%] lg:hover:-translate-y-8 lg:transition-all lg:duration-300 ">
+          <div className="lg:absolute lg:left-[63%] xl:left-[73%]  lg:bottom-[15%] lg:hover:-translate-y-8 lg:transition-all lg:duration-300 ">
             <img
-              className="object-cover lg:size-96"
+              className="object-cover lg:rounded-full lg:bg-gray-500 lg:border-4 lg:size-96"
               src="mkf.png"
               alt=""
               draggable={false}

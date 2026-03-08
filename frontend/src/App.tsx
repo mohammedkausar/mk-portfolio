@@ -18,8 +18,8 @@ function App() {
         <Hearder header={data.header} />
         <About about={data.about} />
         <Skills skill={data.skill} />
-        <Projects project={data.projects} />
         <Experience data={data.experience} />
+        <Projects project={data.projects} />
         <Contact contactData={data.contact} />
         <BackToTop />
         <Footer footerData={data.footer} />

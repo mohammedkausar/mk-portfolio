@@ -10,10 +10,10 @@ const Projects = ({ project }: any) => {
   const { isDark } = useTheme();
 
   return (
-    <section id="projects" className=" py-10  border-y-2 bg-black">
+    <section id="projects" className=" py-10  border-y-2 ">
       {/* app-container applies only on large screens */}
       <div className="px-4 app-container">
-        <h2 className="mb-8 text-3xl underline underline-offset-8 font-semibold text-center text-white">
+        <h2 className="mb-8 text-3xl underline underline-offset-8 font-semibold text-center">
           Projects
         </h2>
 

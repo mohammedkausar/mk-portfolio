@@ -152,7 +152,7 @@ const data = {
             "Worked with Nuxt SSR and client hydration, ensuring correct state synchronization between server-rendered and client-rendered UI.",
             "Implemented robust error handling and fallback UI to manage API failures and edge cases.",
           ],
-          tech: ["HTML", "Tailwind CSS", "Vue.js", "Nuxt.js", "Pinia"],
+          tech: ["HTML", "Tailwind CSS", "Vue.js", "Nuxt.js", "Pinia", "SSR"],
         },
         {
           title: "Smyths Analytics Dashboard",

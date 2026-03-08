@@ -1,7 +1,4 @@
-import { useTheme } from "@/context/theme-context";
-
 const Experience = ({ data }: any) => {
-  const { isDark } = useTheme();
   return (
     <section id="experience" className="py-10 bg-black">
       <div className="px-4 app-container">

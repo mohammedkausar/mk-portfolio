@@ -1,5 +1,4 @@
 import { Mail } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 
 const icons: any = {
   x: (

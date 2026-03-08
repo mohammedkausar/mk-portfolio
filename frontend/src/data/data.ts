@@ -12,13 +12,14 @@ const data = {
         url: "#skill",
       },
       {
+        text: "Experience",
+        url: "#experience",
+      },
+      {
         text: "Projects",
         url: "#projects",
       },
-      {
-        text: "Experience",
-        url: "#experience", // optional
-      },
+
       {
         text: "Contact",
         url: "#contact",
